@@ -1,10 +1,37 @@
 :root {
+  --hue: 80;
+  --sat: 50%;
+  --light: 50%;
+  --font-white: rgb(249, 255, 238);
+  --dark-grey: hsl(220, 3%, 30%);
+  --light-grey: hsl(220, 3%, 40%);
+  --theme-color: hsl(var(--hue), var(--sat), var(--light));
+  --theme-red: hsl(0, var(--sat), var(--light));
+  --header-background-color: white;
+  --font-dark: rgba(12, 12, 12, 0.87);
+  --calendar-background: var(--dark-grey);
+  --calendar-border: white;
+  --navbar: var(--theme-color);
+  --navbar-color: white;
+  --navbar-hover-color: hsl(var(--hue), 70%, var(--light));
+  --deadline-background: rgb(89, 91, 95);
+  --deadline-color: var(--font-white);
+  --projects: var(--dark-grey);
+  --projects-color: var(--font-white);
+  --projects-list: rgb(89, 91, 95);
+  --projects-list-color: var(--font-white);
+  --active-project: var(--theme-color);
+  --missed-project: var(--theme-red);
+  --queue-project: rgba(134, 134, 134, 0.747);
+  --circles-background: rgb(89, 91, 95);
+  --offline: rgb(93, 102, 85);
+  --online: var(--theme-color);
+  --away: rgb(161, 161, 42);
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  color: var(--font-dark);
   color-scheme: light dark;
-  color: rgba(12, 12, 12, 0.87);
   background-color: #f1f1f1;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,6 +44,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -33,6 +61,7 @@ h1 {
 .card {
   padding: 2em;
 }
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -44,23 +73,221 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: var(--background-color);
   }
   a:hover {
     color: #747bff;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: var(--background-color);
   }
 }
+/* APP */
+.content {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.content .side {
+  display: flex;
+  flex-direction: column;
+}
+.content .left {
+  width: 50%;
+}
+.content .right {
+  width: 50%;
+}
+.content .calendar {
+  background-color: var(--calendar-background);
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+  height: 100%;
+}
+.content .ec {
+  min-height: 100%;
+  width: 90%;
+  /* https://github.com/vkurko/calendar/blob/master/packages/core/src/styles/theme.scss */
+  --ec-bg-color: var(--calendar-background);
+  --ec-text-color: #ffffff;
+  --ec-border-color: var(var(--calendar-border));
+}
+
+/* HEADER */
+.header {
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--header-background-color);
+}
+.header .logo {
+  display: flex;
+  align-items: center;
+}
+.header .bonkoLogo {
+  max-height: 50%;
+}
+.header .profile-holder {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+}
+.header .side {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+.header .side h4,
+.header h5 {
+  margin: 0px;
+}
+.header .circle {
+  height: 50px;
+  width: 50px;
+  background-color: var(--online);
+  border-radius: 50px;
+}
+.header .circle .usericon {
+  height: 100%;
+}
+
+/* NAVBAR */
+.navbar {
+  background-color: var(--navbar);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+}
+.navbar a {
+  color: var(--navbar-color);
+  font-size: 1.5rem;
+}
+.navbar a:hover {
+  color: var(--navbar-hover-color);
+  text-decoration: underline;
+}
+
+/* NEXT DEADLINE */
+.next-deadline {
+  display: flex;
+  background-color: var(--deadline-background);
+  color: var(--deadline-color);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+}
+.next-deadline h3 {
+  font-weight: 400;
+  font-size: 4rem;
+  color: red;
+  margin: 0px;
+}
+.next-deadline h4 {
+  font-size: x-large;
+  margin: 0px;
+  font-weight: 200;
+  text-decoration: underline;
+}
+
+.projects {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: var(--projects);
+  color: var(--projects-color);
+}
+.projects .total {
+  color: var(--font-white);
+}
+.projects .queue {
+  color: rgb(145, 145, 155);
+}
+.projects .active {
+  color: var(--theme-color);
+}
+.projects .inactive {
+  color: var(--theme-red);
+}
+
+.online-container {
+  background-color: var(--circles-background);
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: space-evenly;
+}
+.online-container .circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  aspect-ratio: 1/1;
+  height: 4rem;
+  color: rgb(255, 255, 255);
+  font-weight: 200;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.online-container .circle h1 {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+.online-container .online {
+  background-color: var(--online);
+}
+.online-container .offline {
+  background-color: var(--offline);
+}
+.online-container .away {
+  background-color: var(--away);
+}
+
+.projects-list {
+  max-height: 100%;
+  overflow-y: scroll;
+  background-color: var(--projects-list);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.projects-list .project {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding: 1rem;
+}
+.projects-list .active {
+  background-color: var(--active-project);
+}
+.projects-list .missed {
+  background-color: var(--missed-project);
+}
+.projects-list .queue {
+  background-color: var(--queue-project);
+}
+.projects-list h2 {
+  margin: 0px;
+  color: White;
+}
+.projects-list .project-title {
+  color: var(--projects-list-color);
+  font-weight: 400;
+}/*# sourceMappingURL=app.css.map */

@@ -1,4 +1,5 @@
 <script>
+  import '../app.css'
   const Users = [
     { name: "Vladimir Romanov", status: "online" },
     { name: "Elena Markova", status: "away" },
@@ -21,33 +22,3 @@
   {/each}
 </div>
 
-<style>
-  .online-container {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-    padding: 1rem;
-    justify-content: space-evenly;
-  }
-  .circle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 100%;
-    outline: 1px solid black;
-    aspect-ratio: 1 / 1;
-    height: 4rem;
-    color: black;
-    user-select: none;
-  }
-
-  .online {
-    background-color: #00e700;
-  }
-  .offline {
-    background-color: #848484;
-  }
-  .away {
-    background-color: #ffe100;
-  }
-</style>

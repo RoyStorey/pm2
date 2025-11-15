@@ -31,39 +31,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  .content {
-    width: 100%;
-    height: 85vh;
-    outline: 1px solid black;
-    display: flex;
-    flex-direction: row;
-  }
-  .side {
-    display: flex;
-    flex-direction: column;
-    outline: 1px solid black;
-  }
-  .left {
-    width: 50%;
-  }
-  .right {
-    width: 50%;
-  }
-  .calendar {
-    background-color: #212121;
-    display: flex;
-    justify-content: center;
-    padding: 0.5rem;
-    height: 100%;
-  }
-  .ec {
-    min-height: 100%;
-    width: 90%;
-    /* https://github.com/vkurko/calendar/blob/master/packages/core/src/styles/theme.scss */
-    --ec-bg-color: #212121;
-    --ec-text-color: #ffffff;
-    --ec-border-color: #212121;
-  }
-</style>
